@@ -49,7 +49,7 @@ for (K in Ks) {
 # Plot for smaller sample
 betas_sq_small <- lapply(small_sims, function(x) 2000*(x-1)^2)
 MSE_small <- unlist(lapply(betas_sq_small, mean))
-SD_small <- unlist(lapply(betas_sq_small, function(x) sqrt(var(x)/2000)))
+SD_small <- unlist(lapply(betas_sq_small, function(x) sqrt(var(x)/M)))
 MSE_small_lb = MSE_small - qnorm(0.975)*SD_small
 MSE_small_ub = MSE_small + qnorm(0.975)*SD_small
 small_data <- data.frame(
@@ -94,7 +94,7 @@ for (K in Ks) {
 # Plot for large sample
 betas_sq_large <- lapply(large_sims, function(x) 2^15*(x-1)^2)
 MSE_large <- unlist(lapply(betas_sq_large, mean))
-SD_large <- unlist(lapply(betas_sq_large, function(x) sqrt(var(x)/2^15)))
+SD_large <- unlist(lapply(betas_sq_large, function(x) sqrt(var(x)/M)))
 MSE_large_lb = MSE_large - qnorm(0.975)*SD_large
 MSE_large_ub = MSE_large + qnorm(0.975)*SD_large
 large_data <- data.frame(
